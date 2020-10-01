@@ -20,26 +20,38 @@
       <input name="mass" id="mass" type="number" class="input">
     </div>
 
-    <label for="weight" class="label">Weight: (N)</label>
+    <hr>
+
+    <label for="pound-weight" class="label">Weight: (Lbs)</label>
     <div class="field">
-      <input name="weight" id="weight" type="number" class="input">
+      <input name="pound-weight" id="pound-weight" type="number" class="input">
+    </div>
+    
+    <label for="newton-weight" class="label">Weight: (N)</label>
+    <div class="field">
+      <input name="newton-weight" id="newton-weight" type="number" class="input">
     </div>
 
     <script>
       const massEle = document.getElementById('mass');
       const gravityEle = document.getElementById('gravity');
-      const weightEle = document.getElementById('weight');
+      const lbWeightEle = document.getElementById('pound-weight');
+      const nWeightEle = document.getElementById('newton-weight');
+      const pWeightEle = document.getElementById('pound-weight');
       
       massEle.addEventListener('input', () => {
-        weightEle.value = massEle.value * gravityEle.value
+        nWeightEle.value = massEle.value * gravityEle.value
+        pWeightEle.value =  (massEle.value * gravityEle.value) / 4.448
       });
   
-      weightEle.addEventListener('input', () => {
-        massEle.value = weightEle.value / gravityEle.value
+      nWeightEle.addEventListener('input', () => {
+        massEle.value = nWeightEle.value / gravityEle.value
+        pWeightEle.value = (massEle.value * gravityEle.value) / 4.448
       });
 
       gravityEle.addEventListener('input', () => {
-        weightEle.value = massEle.value * gravityEle.value;
+        nWeightEle.value = massEle.value * gravityEle.value;
+        pWeightEle.value = (massEle.value * gravityEle.value) / 4.448
       });
       
     </script>
