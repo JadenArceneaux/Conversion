@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convert</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.0/css/bulma.css">
+</head>
+<body class="section">
+  <h1 class="title">Formulas</h1>
+  <form class="box" id="weight-calc">
+    <h2 class="subtitle">Calculating Weight</h2>
+    <label for="gravity" class="label">Gravity: (N/Kg)</label>
+    <div class="field">
+      <input name="gravity" id="gravity" type="number" class="input" value="9.8">
+    </div>
+
+    <label for="mass" class="label">Mass: (Kg)</label>
+    <div class="field">
+      <input name="mass" id="mass" type="number" class="input">
+    </div>
+
+    <label for="weight" class="label">Weight: (N)</label>
+    <div class="field">
+      <input name="weight" id="weight" type="number" class="input">
+    </div>
+
+    <script>
+      const massEle = document.getElementById('mass');
+      const gravityEle = document.getElementById('gravity');
+      const weightEle = document.getElementById('weight');
+      
+      massEle.addEventListener('input', () => {
+        weightEle.value = massEle.value * gravityEle.value
+      });
+  
+      weightEle.addEventListener('input', () => {
+        massEle.value = weightEle.value / gravityEle.value
+      });
+      
+    </script>
+  </form>
+
+
+  <form class="box" id="kinetic-calc">
+    <h2 class="subtitle">Kinetic Energy</h2>
+
+    <label for="mass" class="label">Mass: (Kg)</label>
+    <div class="field">
+      <input type="number" class="input" name="mass" id="mass">
+    </div>
+
+    <label for="velocity" class="label">Velocity: (m/s)</label>
+    <div class="field">
+      <input type="number" class="input" name="velocity" id="velocity">
+    </div>
+    
+    <label for="kinetic-energy" class="label">Kinetic Energy: (j)</label>
+    <div class="field">
+      <input type="number" class="input" name="kinetic-energy" id="kinetic-energy">
+    </div>
+
+  </form>
+</body>
+</html>
