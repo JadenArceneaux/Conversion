@@ -37,6 +37,10 @@
       weightEle.addEventListener('input', () => {
         massEle.value = weightEle.value / gravityEle.value
       });
+
+      gravityEle.addEventListener('input', () => {
+        weightEle.value = massEle.value * gravityEle.value;
+      });
       
     </script>
   </form>
