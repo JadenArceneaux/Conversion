@@ -38,15 +38,14 @@
       const lbWeightEle = document.getElementById('pound-weight');
       const nWeightEle = document.getElementById('newton-weight');
       const pWeightEle = document.getElementById('pound-weight');
-      
       massEle.addEventListener('input', () => {
-        nWeightEle.value = massEle.value * gravityEle.value
-        pWeightEle.value =  (massEle.value * gravityEle.value) / 4.448
+        nWeightEle.value = parseFloat(massEle.value * gravityEle.value).toPrecision(12)
+        pWeightEle.value =  parseFloat((massEle.value * gravityEle.value) / 4.448).toPrecision(12)
       });
   
       nWeightEle.addEventListener('input', () => {
-        massEle.value = nWeightEle.value / gravityEle.value
-        pWeightEle.value = (massEle.value * gravityEle.value) / 4.448
+        massEle.value = parseFloat(nWeightEle.value / gravityEle.value).toPrecision(12)
+        pWeightEle.value = parseFloat((massEle.value * gravityEle.value) / 4.448).toPrecision(12)
       });
 
       gravityEle.addEventListener('input', () => {
