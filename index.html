@@ -38,14 +38,24 @@
       const lbWeightEle = document.getElementById('pound-weight');
       const nWeightEle = document.getElementById('newton-weight');
       const pWeightEle = document.getElementById('pound-weight');
+
+      const PRECISION = 10;
+
       massEle.addEventListener('input', () => {
-        nWeightEle.value = parseFloat(massEle.value * gravityEle.value).toPrecision(12)
-        pWeightEle.value =  parseFloat((massEle.value * gravityEle.value) / 4.448).toPrecision(12)
+        nWeightEle.value = parseFloat(massEle.value * gravityEle.value).toPrecision(PRECISION)
+        pWeightEle.value =  parseFloat((massEle.value * gravityEle.value) / 4.448).toPrecision(PRECISION)
       });
   
       nWeightEle.addEventListener('input', () => {
-        massEle.value = parseFloat(nWeightEle.value / gravityEle.value).toPrecision(12)
-        pWeightEle.value = parseFloat((massEle.value * gravityEle.value) / 4.448).toPrecision(12)
+        massEle.value = parseFloat(nWeightEle.value / gravityEle.value).toPrecision(PRECISION)
+        pWeightEle.value = parseFloat((massEle.value * gravityEle.value) / 4.448).toPrecision(PRECISION)
+      });
+
+      pWeightEle.addEventListener('input', () => {
+        let newtonWeight = parseFloat(pWeightEle.value * 4.448).toPrecision(PRECISION);
+        let mass = parseFloat(newtonWeight / gravityEle.value).toPrecision(PRECISION)
+        massEle.value = mass;
+        nWeightEle.value = newtonWeight; 
       });
 
       gravityEle.addEventListener('input', () => {
