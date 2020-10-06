@@ -33,7 +33,7 @@
     </div>
 
     <script>
-      const massEle = document.getElementById('mass');
+      let massEle = document.getElementById('mass');
       const gravityEle = document.getElementById('gravity');
       const lbWeightEle = document.getElementById('pound-weight');
       const nWeightEle = document.getElementById('newton-weight');
@@ -70,9 +70,9 @@
   <form class="box" id="kinetic-calc">
     <h2 class="subtitle">Kinetic Energy</h2>
 
-    <label for="mass" class="label">Mass: (Kg)</label>
+    <label for="kMass" class="label">Mass: (Kg)</label>
     <div class="field">
-      <input type="number" class="input" name="mass" id="mass">
+      <input type="number" class="input" name="kMass" id="kMass">
     </div>
 
     <label for="velocity" class="label">Velocity: (m/s)</label>
@@ -85,6 +85,27 @@
       <input type="number" class="input" name="kinetic-energy" id="kinetic-energy">
     </div>
 
+    <script>
+      (function() {
+        const massEle = document.getElementById('kMass');
+        const velocityEle = document.getElementById('velocity');
+        const kineticEnEle = document.getElementById('kinetic-energy');
+  
+        massEle.addEventListener('input', () => {
+          kineticEnEle.value = (
+            ( 0.5 * parseInt(massEle.value) ) * 
+            ( parseInt(velocityEle.value) * parseInt(velocityEle.value) )
+          );
+        });
+        velocityEle.addEventListener('input', () => {
+          kineticEnEle.value = (
+            ( 0.5 * parseInt(massEle.value) ) * 
+            ( parseInt(velocityEle.value) * parseInt(velocityEle.value) )
+          );
+        });
+      })();
+
+    </script>
   </form>
 
 
