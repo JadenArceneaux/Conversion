@@ -86,5 +86,53 @@
     </div>
 
   </form>
+
+
+  <form class="box" id="average-acc-calc">
+    <h2 class="subtitle">Average Acceleration</h2>
+
+    <label for="acceleration1" class="label">Acceleration 1:</label>
+    <div class="field">
+      <input type="number" name="acceleration1" id="acceleration1" class="input">
+    </div>
+
+    <label for="acceleration2" class="label">Acceleration 2:</label>
+    <div class="field">
+      <input type="number" name="acceleration2" id="acceleration2" class="input">
+    </div>
+
+    <label for="time" class="label">Time:</label>
+    <div class="field">
+      <input type="number" name="time" id="time" class="input">
+    </div>
+
+    <hr>
+    
+    <label for="averageAcc" class="label">Average Acceleration:</label>
+    <div class="field">
+      <input type="number" name="averageAcc" id="averageAcc" class="input">
+    </div>
+
+    <script>
+      const acceleration1 = document.getElementById('acceleration1');
+      const acceleration2 = document.getElementById('acceleration2');
+      const time = document.getElementById('time');
+      const averageAcc = document.getElementById('averageAcc');
+      
+      acceleration1.addEventListener('input', () => {
+        averageAcc.value = (parseInt(acceleration1.value) + parseInt(acceleration2.value)) / time.value;
+      });
+      acceleration2.addEventListener('input', () => {
+        averageAcc.value = (parseInt(acceleration1.value) + parseInt(acceleration2.value)) / time.value;
+      });
+      time.addEventListener('input', () => {
+        averageAcc.value = (parseInt(acceleration1.value) + parseInt(acceleration2.value)) / time.value;
+      });
+
+    </script>
+  </form>
+
+
+
 </body>
 </html>
