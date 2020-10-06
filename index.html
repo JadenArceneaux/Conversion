@@ -156,13 +156,13 @@
       const averageAcc = document.getElementById('averageAcc');
       
       acceleration1.addEventListener('input', () => {
-        averageAcc.value = (parseInt(acceleration1.value) + parseInt(acceleration2.value)) / time.value;
+        averageAcc.value = (parseInt(acceleration1.value) - parseInt(acceleration2.value)) / time.value;
       });
       acceleration2.addEventListener('input', () => {
-        averageAcc.value = (parseInt(acceleration1.value) + parseInt(acceleration2.value)) / time.value;
+        averageAcc.value = (parseInt(acceleration1.value) - parseInt(acceleration2.value)) / time.value;
       });
       time.addEventListener('input', () => {
-        averageAcc.value = (parseInt(acceleration1.value) + parseInt(acceleration2.value)) / time.value;
+        averageAcc.value = (parseInt(acceleration1.value) - parseInt(acceleration2.value)) / time.value;
       });
 
     </script>
