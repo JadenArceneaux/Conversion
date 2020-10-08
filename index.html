@@ -48,35 +48,38 @@
     </div>
 
     <script>
-      let massEle = document.getElementById('mass');
-      const gravityEle = document.getElementById('gravity');
-      const lbWeightEle = document.getElementById('pound-weight');
-      const nWeightEle = document.getElementById('newton-weight');
-      const pWeightEle = document.getElementById('pound-weight');
+      (function() {
+        let massEle = document.getElementById('mass');
+        const gravityEle = document.getElementById('gravity');
+        const lbWeightEle = document.getElementById('pound-weight');
+        const nWeightEle = document.getElementById('newton-weight');
+        const pWeightEle = document.getElementById('pound-weight');
 
-      const PRECISION = 10;
+        const PRECISION = 10;
 
-      massEle.addEventListener('input', () => {
-        nWeightEle.value = parseFloat(massEle.value * gravityEle.value).toPrecision(PRECISION)
-        pWeightEle.value =  parseFloat((massEle.value * gravityEle.value) / 4.448).toPrecision(PRECISION)
-      });
-  
-      nWeightEle.addEventListener('input', () => {
-        massEle.value = parseFloat(nWeightEle.value / gravityEle.value).toPrecision(PRECISION)
-        pWeightEle.value = parseFloat((massEle.value * gravityEle.value) / 4.448).toPrecision(PRECISION)
-      });
+        massEle.addEventListener('input', () => {
+          nWeightEle.value = parseFloat(massEle.value * gravityEle.value).toPrecision(PRECISION)
+          pWeightEle.value =  parseFloat((massEle.value * gravityEle.value) / 4.448).toPrecision(PRECISION)
+        });
+    
+        nWeightEle.addEventListener('input', () => {
+          massEle.value = parseFloat(nWeightEle.value / gravityEle.value).toPrecision(PRECISION)
+          pWeightEle.value = parseFloat((massEle.value * gravityEle.value) / 4.448).toPrecision(PRECISION)
+        });
 
-      pWeightEle.addEventListener('input', () => {
-        let newtonWeight = parseFloat(pWeightEle.value * 4.448).toPrecision(PRECISION);
-        let mass = parseFloat(newtonWeight / gravityEle.value).toPrecision(PRECISION)
-        massEle.value = mass;
-        nWeightEle.value = newtonWeight; 
-      });
+        pWeightEle.addEventListener('input', () => {
+          let newtonWeight = parseFloat(pWeightEle.value * 4.448).toPrecision(PRECISION);
+          let mass = parseFloat(newtonWeight / gravityEle.value).toPrecision(PRECISION)
+          massEle.value = mass;
+          nWeightEle.value = newtonWeight; 
+        });
 
-      gravityEle.addEventListener('input', () => {
-        nWeightEle.value = massEle.value * gravityEle.value;
-        pWeightEle.value = (massEle.value * gravityEle.value) / 4.448
-      });
+        gravityEle.addEventListener('input', () => {
+          nWeightEle.value = massEle.value * gravityEle.value;
+          pWeightEle.value = (massEle.value * gravityEle.value) / 4.448
+        });
+      })();
+
       
     </script>
   </form>
@@ -102,6 +105,7 @@
 
     <script>
       (function() {
+        // (1/2)mv^2
         const massEle = document.getElementById('kMass');
         const velocityEle = document.getElementById('velocity');
         const kineticEnEle = document.getElementById('kinetic-energy');
@@ -150,20 +154,23 @@
     </div>
 
     <script>
-      const acceleration1 = document.getElementById('acceleration1');
-      const acceleration2 = document.getElementById('acceleration2');
-      const time = document.getElementById('time');
-      const averageAcc = document.getElementById('averageAcc');
-      
-      acceleration1.addEventListener('input', () => {
-        averageAcc.value = (parseInt(acceleration1.value) - parseInt(acceleration2.value)) / time.value;
-      });
-      acceleration2.addEventListener('input', () => {
-        averageAcc.value = (parseInt(acceleration1.value) - parseInt(acceleration2.value)) / time.value;
-      });
-      time.addEventListener('input', () => {
-        averageAcc.value = (parseInt(acceleration1.value) - parseInt(acceleration2.value)) / time.value;
-      });
+      (function() {
+        const acceleration1 = document.getElementById('acceleration1');
+        const acceleration2 = document.getElementById('acceleration2');
+        const time = document.getElementById('time');
+        const averageAcc = document.getElementById('averageAcc');
+        
+        acceleration1.addEventListener('input', () => {
+          averageAcc.value = (parseInt(acceleration1.value) - parseInt(acceleration2.value)) / time.value;
+        });
+        acceleration2.addEventListener('input', () => {
+          averageAcc.value = (parseInt(acceleration1.value) - parseInt(acceleration2.value)) / time.value;
+        });
+        time.addEventListener('input', () => {
+          averageAcc.value = (parseInt(acceleration1.value) - parseInt(acceleration2.value)) / time.value;
+        });    
+      })();
+
 
     </script>
   </form>
