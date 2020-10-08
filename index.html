@@ -175,7 +175,53 @@
     </script>
   </form>
 
+  <form class="box" id="force-calc">
+    <h2 class="subtitle">Force</h2>
+    <label for="fMass" class="label">Mass:</label>
+    <div class="field">
+      <input type="number" class="input" name="fMass" id="fMass">
+    </div>
 
+    <label for="fAcceration" class="label">Acceration:</label>
+    <div class="field">
+      <input type="number" class="input" name="fAcceration" id="fAcceration">
+    </div>
+
+    <hr>
+
+    <label class="label" for="fForce">Force:</label>
+    <div class="field">
+      <input type="number" class="input" name="fForce" id="fForce">
+    </div>
+
+    <script>
+      (function() {
+        const mass = document.getElementById('fMass');
+        const acceration = document.getElementById('fAcceration');
+        const force = document.getElementById('fForce');
+
+        mass.addEventListener('input', () => {
+          if (acceration.value) {
+            force.value = parseFloat(mass.value) * parseFloat(acceration.value);
+          }
+        });
+        acceration.addEventListener('input', () => {
+          if (mass.value) {
+            force.value = parseFloat(mass.value) * parseFloat(acceration.value);
+          }
+        });
+
+        force.addEventListener('input', () => {
+          if (!mass.value) {
+            mass.value = parseInt(force.value) / parseInt(acceration.value);
+          } else if (!acceration.value) {
+            acceration.value = parseInt(force.value) / parseInt(mass.value);
+          }
+        });
+      })();
+    </script>
+
+  </form>
 
 </body>
 </html>
